@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 mongoose.connect("mongodb://localhost:27017");
 
@@ -8,7 +9,7 @@ const User = require("./models/user");
 const app = express();
 // middleware
 app.use(express.json());
-
+app.use(cors({corsOrigin: "localhost:5173/"}))
 // simple route
 app.get("/", (req, res) => {
   return res.send("Hello Node.js World!");
